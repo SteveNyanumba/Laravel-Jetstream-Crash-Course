@@ -86,6 +86,6 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         Student::find($id)->delete();
-        return response('Successfully Deleted your Student', 200);
+        return redirect()->back()->with('message','Successfully Deleted your Student from the system');
     }
 }

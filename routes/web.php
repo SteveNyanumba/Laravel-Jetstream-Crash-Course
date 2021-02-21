@@ -17,9 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
-Route::middleware(['auth:sanctum', 'verified'])->get('/students', function () {
-    return Inertia\Inertia::render('Students');
-})->name('students');
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/dashboard', function () {
+        return Inertia\Inertia::render('Dashboard');
+    })->name('dashboard');
+    Route::get('/students', function () {
+        return Inertia\Inertia::render('Students');
+    })->name('students');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('api')->group(function(){
+    Route::apiResource('students','App\Http\Controllers\StudentsController');
+    Route::apiResource('courses','App\Http\Controllers\CoursesController');
+
+
+});

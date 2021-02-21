@@ -49,7 +49,7 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                                             <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                                            <button @click="deleteStudent(x.id)" class="btn text-indigo-600 hover:text-indigo-900">Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -177,6 +177,11 @@
                     Fire.$emit('addedStudent')
                 }
 
+            },
+            async deleteStudent(id){
+                this.$inertia.delete(`/api/students/${id}`)
+
+                // this.$inertia.delete(`/api/students/${id}`)
             },
             async addCourse(){
                 const res = await axios.post('/api/courses', this.course)

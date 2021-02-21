@@ -4477,20 +4477,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    addCourse: function addCourse() {
+    deleteStudent: function deleteStudent(id) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios.post('/api/courses', _this2.course);
+                _this2.$inertia["delete"]("/api/students/".concat(id)); // this.$inertia.delete(`/api/students/${id}`)
+
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    addCourse: function addCourse() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.post('/api/courses', _this3.course);
 
               case 2:
-                res = _context2.sent;
+                res = _context3.sent;
 
                 if (res.status === 201) {
                   Toast.fire({
@@ -4504,39 +4523,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }))();
     },
     getStudents: function getStudents() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/api/students').then(function (res) {
-        _this3.students = res.data;
+        _this4.students = res.data;
       })["catch"](function (err) {
         console.log(err);
       });
     },
     getCourses: function getCourses() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get('/api/courses').then(function (res) {
-        _this4.courses = res.data;
+        _this5.courses = res.data;
       })["catch"](function (err) {
         console.log(err);
       });
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getCourses(), this.getStudents(), Fire.$on('addedCourse', function () {
-      _this5.getCourses();
+      _this6.getCourses();
     });
     Fire.$on('addedStudent', function () {
-      _this5.getStudents();
+      _this6.getStudents();
     });
   }
 });
@@ -50761,11 +50780,15 @@ var render = function() {
                                           ),
                                           _vm._v(" "),
                                           _c(
-                                            "a",
+                                            "button",
                                             {
                                               staticClass:
-                                                "text-indigo-600 hover:text-indigo-900",
-                                              attrs: { href: "#" }
+                                                "btn text-indigo-600 hover:text-indigo-900",
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.deleteStudent(x.id)
+                                                }
+                                              }
                                             },
                                             [_vm._v("Delete")]
                                           )
@@ -65349,9 +65372,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Steve Nyanumba\Desktop\Test Apps\studentsapp\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Steve Nyanumba\Desktop\Test Apps\studentsapp\resources\sass\custom.scss */"./resources/sass/custom.scss");
-module.exports = __webpack_require__(/*! C:\Users\Steve Nyanumba\Desktop\Test Apps\studentsapp\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\Steve Nyanumba\Desktop\My Apps\Test Apps\studentsapp\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Steve Nyanumba\Desktop\My Apps\Test Apps\studentsapp\resources\sass\custom.scss */"./resources/sass/custom.scss");
+module.exports = __webpack_require__(/*! C:\Users\Steve Nyanumba\Desktop\My Apps\Test Apps\studentsapp\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
